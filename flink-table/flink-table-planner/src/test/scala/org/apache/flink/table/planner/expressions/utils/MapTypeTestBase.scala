@@ -23,26 +23,26 @@ import org.apache.flink.types.Row
 
 import com.google.common.collect.ImmutableMap
 
-import java.util.{HashMap => JHashMap}
+import java.util.{LinkedHashMap => JLinkedHashMap}
 
 abstract class MapTypeTestBase extends ExpressionTestBase {
 
   override def testData: Row = {
-    val map1 = new JHashMap[String, Int]()
+    val map1 = new JLinkedHashMap[String, Int]()
     map1.put("a", 12)
     map1.put("b", 13)
-    val map2 = new JHashMap[Int, String]()
+    val map2 = new JLinkedHashMap[Int, String]()
     map2.put(12, "a")
     map2.put(13, "b")
-    val map3 = new JHashMap[Long, Int]()
+    val map3 = new JLinkedHashMap[Long, Int]()
     map3.put(10L, 1)
     map3.put(20L, 2)
-    val map4 = new JHashMap[Int, Array[Int]]()
+    val map4 = new JLinkedHashMap[Int, Array[Int]]()
     map4.put(1, Array(10, 100))
     map4.put(2, Array(20, 200))
     val testData = new Row(12)
     testData.setField(0, null)
-    testData.setField(1, new JHashMap[String, Int]())
+    testData.setField(1, new JLinkedHashMap[String, Int]())
     testData.setField(2, map1)
     testData.setField(3, map2)
     testData.setField(4, "foo")
